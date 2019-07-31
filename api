@@ -1,0 +1,209 @@
+# Public Rest API for CoVEX (2019-07-31)
+# General API Information
+* The base endpoint is: **https://covex.io**
+* All endpoints return either a JSON object or array.
+* Data is returned in **ascending** order. Oldest first, newest last.
+* All time and timestamp related fields are in milliseconds.
+* For `GET` endpoints, parameters must be sent as a `query string`.
+* For `POST`, `PUT`, and `DELETE` endpoints, the parameters may be sent as a
+  `query string` or in the `request body` with content type
+  `application/x-www-form-urlencoded`. You may mix parameters between both the
+  `query string` and `request body` if you wish to do so.
+* Parameters may be sent in any order.
+* If a parameter sent in both the `query string` and `request body`, the
+  `query string` parameter will be used.
+
+### Market information
+```
+GET /api/v1/markets/{btc}
+```
+**Parameters:**
+btc
+
+**Response:**
+```javascript
+{
+    "status": 1,
+    "msg": "Success",
+    "Info": [
+        {
+            "pair": "LTC/BTC",
+            "coin": "Bitcoin",
+            "lastprice": "0.00942300/$95.03",
+            "24hchange": "1.93%",
+            "24hhigh": "0.00980400",
+            "24hlow": "0.00924200",
+            "marketcap": "$28111270.80",
+            "24hvolume": "2787.31670569"
+        }
+    ]
+} 
+```
+
+### Asset List
+```
+GET /api/v1/assets
+```
+**Parameters:**
+None
+
+**Response:**
+```javascript
+Responce :
+{
+    "status": 1,
+    "msg": "Success",
+    "Info": {
+        "BTC": {
+            "lastUpdateTimestamp": "2019-07-25T13:27:00Z",
+            "name": "Bitcoin",
+            "UnifiedCryptoassetID": "1",
+            "canWithdraw": true,
+            "canDeposit": true,
+            "minWithdrawal": "0.0025",
+            "maxWithdrawal": "no limit",
+            "makerFee": "0.0006",
+            "takerFee": "0.0006"
+        },
+        "LTC": {
+            "lastUpdateTimestamp": "2019-07-25T13:27:00Z",
+            "name": "Litecoin",
+            "UnifiedCryptoassetID": "2",
+            "canWithdraw": true,
+            "canDeposit": true,
+            "minWithdrawal": "0.003",
+            "maxWithdrawal": "no limit",
+            "makerFee": "0.002",
+            "takerFee": "0.002"
+        },
+        "ETH": {
+            "lastUpdateTimestamp": "2019-07-25T13:27:00Z",
+            "name": "Etherum",
+            "UnifiedCryptoassetID": "3",
+            "canWithdraw": true,
+            "canDeposit": true,
+            "minWithdrawal": "0.03",
+            "maxWithdrawal": "no limit",
+            "makerFee": "0.02",
+            "takerFee": "0.02"
+        },
+        "USDT": {
+            "lastUpdateTimestamp": "2019-07-25T13:27:00Z",
+            "name": "Tether",
+            "UnifiedCryptoassetID": "4",
+            "canWithdraw": true,
+            "canDeposit": true,
+            "minWithdrawal": "7.6",
+            "maxWithdrawal": "no limit",
+            "makerFee": "4.3",
+            "takerFee": "4.3"
+        }
+    }
+}  
+```
+
+### Ticker Summary
+```
+GET /api/v1/ticker
+```
+**Parameters:**
+None
+
+**Response:**
+```javascript
+{
+    "status": 1,
+    "msg": "Success",
+    "Info": [
+        {
+            "lastUpdateTimestamp": "2019-07-25T14:47:00Z",
+            "tradingPairs ": "LTCBTC",
+            "LastPrice": "0.00943500",
+            "lowestAsk": "0.00924900",
+            "highestBid": "0.00980400",
+            "baseVolume24h": "28092033.57842464",
+            "quoteVolume24h": "2811.55"
+        },
+        {
+            "lastUpdateTimestamp": "2019-07-25T14:46:00Z",
+            "tradingPairs ": "ETHBTC",
+            "LastPrice": "0.02207600",
+            "lowestAsk": "0.02138200",
+            "highestBid": "0.02245600",
+            "baseVolume24h": "22451036.32730348",
+            "quoteVolume24h": "2246.98"
+        }
+    ]
+} 
+```
+
+### Trades List
+```
+GET /api/v1/trades/ETHBTC
+```
+**Parameters:**
+ETHBTC
+
+**Response:**
+```javascript
+{
+    "status": 1,
+    "msg": "Success",
+    "Info": {
+        "ETHBTC": [
+            {
+                "tradeId": "1556435602120",
+                "price": "0.02212600",
+                "volume": "0.00055540",
+                "time": "2019-07-25T13:27:00Z",
+                "isBuyerMaker": true
+            },
+            {
+                "tradeId": "1556435602123",
+                "price": "0.02212600",
+                "volume": "0.00055540",
+                "time": "2019-07-25T13:27:00Z",
+                "isBuyerMaker": true
+            }
+        ]
+    }
+}
+```
+
+### Depth List
+```
+GET /api/v1/depth/ETHLTC
+```
+**Parameters:**
+ETHLTC
+
+**Response:**
+```javascript
+{
+    "status": 1,
+    "msg": "Success",
+    "Info": {
+        "LastUpdateTimestamp": "2019-07-25T14:19:52Z",
+        "bids": [
+            {
+                "QTY": "1304.40856873",
+                "PRICE": "0.43584000"
+            },
+            {
+                "QTY": "118.35742657",
+                "PRICE": "0.00000050"
+            }
+        ],
+        "asks": [
+            {
+                "QTY": "1276.96652851",
+                "PRICE": "1000000000.00000000"
+            },
+            {
+                "QTY": "5.81810492",
+                "PRICE": "193.00000000"
+            }
+        ]
+    }
+}
+```
