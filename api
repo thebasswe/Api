@@ -21,7 +21,6 @@ GET /api/v1/markets/{btc}
 btc
 
 **Response:**
-```javascript
 {
     "status": 1,
     "msg": "Success",
@@ -38,17 +37,13 @@ btc
         }
     ]
 } 
-```
 
 ### Asset List
-```
 GET /api/v1/assets
-```
 **Parameters:**
 None
 
 **Response:**
-```javascript
 Responce :
 {
     "status": 1,
@@ -110,7 +105,6 @@ GET /api/v1/ticker
 None
 
 **Response:**
-```javascript
 {
     "status": 1,
     "msg": "Success",
@@ -145,7 +139,6 @@ GET /api/v1/trades/ETHBTC
 ETHBTC
 
 **Response:**
-```javascript
 {
     "status": 1,
     "msg": "Success",
@@ -178,7 +171,6 @@ GET /api/v1/depth/ETHLTC
 ETHLTC
 
 **Response:**
-```javascript
 {
     "status": 1,
     "msg": "Success",
